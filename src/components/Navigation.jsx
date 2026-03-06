@@ -32,7 +32,7 @@ export const Navigation = () => {
                 {/* Avatar – always visible */}
                 <motion.img
                     layout
-                    src="/aryan.jpg"
+                    src={`${import.meta.env.BASE_URL}aryan.jpg`}
                     alt="Aryan Somayajula"
                     style={{ width: 44, height: 44, borderRadius: '50%', objectFit: 'cover', objectPosition: 'top center', flexShrink: 0, border: '2px solid var(--border)' }}
                 />

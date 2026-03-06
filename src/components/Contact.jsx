@@ -46,7 +46,7 @@ export const Contact = () => {
                             style={{ width: '100%', aspectRatio: '4/3', marginBottom: 32, overflow: 'hidden', borderRadius: 20 }}
                             whileHover={{ scale: 1.02 }}
                         >
-                            <img src="/aryan.jpg" alt="Aryan Somayajula"
+                            <img src={`${import.meta.env.BASE_URL}aryan.jpg`} alt="Aryan Somayajula"
                                 style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', borderRadius: 18 }}
                             />
                         </motion.div>
@@ -85,7 +85,7 @@ export const Contact = () => {
                             style={{ padding: '24px 28px', marginBottom: 32, borderRadius: 16, display: 'flex', alignItems: 'center', gap: 16 }}
                         >
                             <div style={{ width: 52, height: 52, borderRadius: '50%', overflow: 'hidden', flexShrink: 0, border: 'var(--brutalist-border)' }}>
-                                <img src="/aryan.jpg" alt="Aryan" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+                                <img src={`${import.meta.env.BASE_URL}aryan.jpg`} alt="Aryan" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
                             </div>
                             <div>
                                 <div style={{ fontFamily: 'Bebas Neue', fontSize: 20 }}>Aryan Somayajula</div>

@@ -71,7 +71,7 @@ const MagicCard = ({ scrollY }) => {
                     position: 'relative',
                     aspectRatio: '3/4',
                 }}>
-                    <img src="/aryan.jpg" alt="Aryan Somayajula"
+                    <img src={`${import.meta.env.BASE_URL}aryan.jpg`} alt="Aryan Somayajula"
                         style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block' }}
                     />
 

@@ -162,7 +162,7 @@ export const About = () => (
                             whileHover={{ scale: 1.02, rotate: -1, transition: { duration: 0.4 } }}
                         >
                             <img
-                                src="/aryan.jpg"
+                                src={`${import.meta.env.BASE_URL}aryan.jpg`}
                                 alt="Aryan Somayajula"
                                 style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }}
                             />
