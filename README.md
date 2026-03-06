@@ -1,16 +1,65 @@
-# React + Vite
+# Aryan Somayajula — AI Engineer & Product Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Portfolio Banner](public/aryan.jpg)
 
-Currently, two official plugins are available:
+> **Live Site:** [https://aryan597.github.io/Portfolio/](https://aryan597.github.io/Portfolio/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This repository contains the source code for my personal portfolio — a digital sandbox showcasing my work as an AI Engineer and Product Builder. 
 
-## React Compiler
+The site is built to move beyond a traditional resume. It reflects a modern "product lab" aesthetic, featuring a custom interactive **AI Lab** that connects to live machine learning models for real-time inference.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 The AI Lab (Interactive Features)
 
-## Expanding the ESLint configuration
+The portfolio includes a dedicated `AILab` component that demonstrates real ML capabilities directly in the browser:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **AI Resume Analyzer:** Users can upload a resume (PDF/DOCX) and paste a job description. The frontend hits a live Python/FastAPI backend to evaluate ATS compatibility, extracting skill gaps and returning a scored ATS gauge.
+- **ML Pipeline Visualization:** A scroll-driven interactive breakdown of a production Machine Learning pipeline, built using GSAP ScrollTrigger.
+- **Live Skill Prediction:** A client-side predictive inference widget that scores user-inputted tech skills against market patterns, rendering a dynamic confidence bar and tier rating (e.g., "Strong Profile").
+
+## 🛠️ Tech Stack & Architecture
+
+This is a modern, single-page React frontend optimized for performance and fluid micro-interactions.
+
+### Core Framework
+- **React 18** + **Vite:** Blazing fast hot-module replacement and optimized production builds.
+- **JavaScript (ES6+)**
+
+### Styling & Animation
+- **Vanilla CSS3:** Custom design system utilizing CSS variables for deeply integrated theming, bypassing utility classes for ultimate structural control.
+- **Glassmorphism & Neo-brutalism:** A hybrid design language featuring blurred translucent surfaces, high-contrast borders, and glowing accents.
+- **Framer Motion:** Orchestrates layout animations, spring physics, hover elevations, and page transitions.
+- **GSAP (GreenSock):** Powers complex, scroll-linked timeline animations (ScrollTrigger) within the AI Lab.
+- **Lucide React:** Clean, consistent SVG iconography.
+
+### External Integrations
+- Connects to my custom Render-hosted API Gateway (`rsft-gateway-d22q`) for processing heavy AI inferences.
+
+## 💻 Local Development Setup
+
+If you want to clone this project to explore the code or run it locally:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/aryan597/Portfolio.git
+   cd Portfolio
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the Vite development server:**
+   ```bash
+   npm run dev
+   ```
+   The site will be available at `http://localhost:5173`.
+
+## 📦 Deployment
+
+The site is automatically deployed to **GitHub Pages** via GitHub Actions.
+Any pushes or merges to the `main` branch trigger the `.github/workflows/deploy.yml` pipeline, building the Vite bundle and publishing the `dist` folder.
+
+## 📄 License
+
+This project is open-source and available under the MIT License. Feel free to fork it, learn from the animations, or adapt the architecture for your own portfolio.
