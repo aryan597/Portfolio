@@ -83,7 +83,7 @@ export const Footer = () => {
 
                 {/* Giant Typography Button */}
                 <motion.a
-                    href="/Aryan_Somayajula_CV.pdf"
+                    href={`${import.meta.env.BASE_URL}Aryan_Somayajula_CV.pdf`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="giant-footer-text"
