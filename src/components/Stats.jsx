@@ -2,10 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const stats = [
-    { val: '2+', label: 'Years Experience' },
-    { val: '15+', label: 'Technologies' },
-    { val: '10+', label: 'Projects Built' },
-    { val: 'MSc', label: 'Data Science' },
+    { val: 'MSc', label: 'Merit · Royal Holloway' },
+    { val: '96%', label: 'Dissertation Accuracy' },
+    { val: '3+', label: 'LLM Systems Built' },
+    { val: 'Edge', label: 'AI / Local-First' },
 ];
 
 export const Stats = () => (
