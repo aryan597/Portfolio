@@ -1,21 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, CheckCircle2, ExternalLink } from 'lucide-react';
+import { ChevronDown, CheckCircle2 } from 'lucide-react';
 
 const services = [
-    { title: 'ML Pipeline Engineering', desc: 'End-to-end pipelines — data ingestion, feature engineering, training, and cloud deployment.' },
-    { title: 'AI Product Prototyping', desc: 'Rapidly building intelligent tools: resume analyzers, recommendation systems, generative apps.' },
-    { title: 'Data Science & Analytics', desc: 'Python, SQL, Pandas — turning raw data into decisions with visualizations and predictive models.' },
-    { title: 'Cloud & MLOps', desc: 'AWS, Docker, GitHub Actions — shipping ML models as scalable, production-ready services.' },
+    { title: 'LLM & Agentic Systems', desc: 'End-to-end agentic pipelines, RAG architectures, and context engineering for production LLM deployments.' },
+    { title: 'Edge AI & Local-First ML', desc: 'Running quantised LLMs (Phi-3, LLaMA 3) on constrained hardware - Raspberry Pi, Jetson - with zero cloud dependency.' },
+    { title: 'ML Pipeline Engineering', desc: 'Data ingestion → feature engineering → training → deployment, with rigorous evaluation and monitoring.' },
+    { title: 'Semantic Extraction & RAG', desc: 'Injecting real-time sensor data and unstructured context into LLM windows for grounded, accurate outputs.' },
 ];
 
 const coreSkills = [
-    { name: 'Python', level: 'Advanced' },
-    { name: 'SQL (MySQL · PostgreSQL)', level: 'Advanced' },
-    { name: 'TensorFlow / PyTorch', level: 'Proficient' },
-    { name: 'Tableau / Power BI', level: 'Advanced' },
-    { name: 'Java / Android SDK', level: 'Intermediate' },
-    { name: 'AWS (S3, EC2, Lambda)', level: 'Intermediate' },
+    { name: 'LLMs (Phi-3, LLaMA 3, Whisper)', level: 'Expert' },
+    { name: 'Agentic Workflows & RAG', level: 'Expert' },
+    { name: 'Python · FastAPI', level: 'Expert' },
+    { name: 'Scikit-Learn · NumPy · Pandas', level: 'Advanced' },
+    { name: 'Docker · Edge Computing', level: 'Advanced' },
+    { name: 'SQLite · InfluxDB · SQL', level: 'Advanced' },
 ];
 
 const vp = (delay = 0) => ({
@@ -39,7 +39,7 @@ export const About = () => (
                             What I<br />Build
                         </h2>
                         <p style={{ fontSize: 15, color: 'var(--text-2)', lineHeight: 1.85, marginBottom: 48, maxWidth: 420 }}>
-                            I design and build machine learning systems, AI-powered products, and data pipelines that turn raw information into intelligent software. From model training to deployment — I ship things that work.
+                            I design and build LLM-based systems, agentic pipelines, and production ML solutions that turn raw data into intelligent, autonomous software. From model quantisation on edge hardware to full RAG architectures - I own the full lifecycle.
                         </p>
                         <div className="services-list">
                             {services.map((s, i) => (
@@ -62,7 +62,7 @@ export const About = () => (
                         </div>
                     </motion.div>
 
-                    {/* Right — glass card (flips in 180°) */}
+                    {/* Right - glass card (flips in 180°) */}
                     <motion.div
                         initial={{ opacity: 0, rotateY: -180, x: 80 }}
                         whileInView={{ opacity: 1, rotateY: 0, x: 0 }}
@@ -99,76 +99,44 @@ export const About = () => (
         <section className="section" style={{ background: 'var(--bg-alt)', borderTop: '1px solid var(--border)' }}>
             <div className="container">
                 <motion.span className="section-label" {...vp()}>The Builder</motion.span>
-                <div className="about-grid" style={{ alignItems: 'center' }}>
+                <div style={{ maxWidth: 820 }}>
+                    <motion.h2 style={{ fontSize: 'clamp(48px,7vw,80px)', marginBottom: 24 }} {...vp(0.05)}>
+                        The Mind<br />Behind It
+                    </motion.h2>
+                    <motion.p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.9, marginBottom: 20, maxWidth: 700 }} {...vp(0.1)}>
+                        I'm Aryan - an AI Engineer with an MSc in Data Science & Analytics (Merit, Royal Holloway, University of London) and hands-on experience building end-to-end LLM-based systems, agentic pipelines, RAG architectures, and production ML solutions.
+                    </motion.p>
+                    <motion.p style={{ fontSize: 16, color: 'var(--text-2)', lineHeight: 1.9, marginBottom: 40, maxWidth: 700 }} {...vp(0.15)}>
+                        Deep expertise in context engineering, semantic extraction from unstructured data, and LLM evaluation. Passionate about applying AI to real-world problems - especially edge-first, privacy-preserving systems that run entirely locally.
+                    </motion.p>
 
-                    {/* Left — bio */}
-                    <motion.div {...vp(0.05)}>
-                        <h2 style={{ fontSize: 'clamp(48px,7vw,80px)', marginBottom: 24 }}>The Mind<br />Behind It</h2>
-                        <p style={{ fontSize: 15, color: 'var(--text-2)', lineHeight: 1.9, marginBottom: 20, maxWidth: 480 }}>
-                            I'm Aryan — an AI engineer and machine learning builder based in Canary Wharf, London. I hold an MSc in Data Science & Analytics from Royal Holloway, University of London and a BSc in Computer Applications from BIT Mesra.
-                        </p>
-                        <p style={{ fontSize: 15, color: 'var(--text-2)', lineHeight: 1.9, marginBottom: 40, maxWidth: 480 }}>
-                            I think in systems. I build experiments, ship ML products, and explore how intelligent software can reshape how people work, create, and decide. Every project in this portfolio is a real system with a real ML model behind it.
-                        </p>
-
-                        {/* Stats brutalist grid */}
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 2, marginBottom: 36, border: 'var(--brutalist-border)', background: 'var(--border-hard)' }}>
-                            {[['3+', 'Years Exp.'], ['10+', 'Projects'], ['2', 'Degrees']].map(([v, l]) => (
-                                <div key={l} style={{ background: 'var(--bg)', padding: '24px 16px', textAlign: 'center' }}>
-                                    <div style={{ fontFamily: 'Bebas Neue', fontSize: 52, color: 'var(--accent)', lineHeight: 1 }}>{v}</div>
-                                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-3)', marginTop: 6 }}>{l}</div>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Contact info */}
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 36, fontSize: 14 }}>
-                            <div>
-                                <div style={{ fontWeight: 700, marginBottom: 3, fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-3)' }}>Phone</div>
-                                <div style={{ color: 'var(--text-2)' }}>+44 7407 750520</div>
+                    {/* Stats brutalist grid */}
+                    <motion.div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 2, marginBottom: 36, border: 'var(--brutalist-border)', background: 'var(--border-hard)', maxWidth: 700 }} {...vp(0.2)}>
+                        {[['MSc', 'Merit · Royal Holloway'], ['96%', 'ML Dissertation'], ['3+', 'LLM Pipelines'], ['Edge', 'AI Systems']].map(([v, l]) => (
+                            <div key={l} style={{ background: 'var(--bg)', padding: '24px 16px', textAlign: 'center' }}>
+                                <div style={{ fontFamily: 'Bebas Neue', fontSize: v.length > 4 ? 32 : 48, color: 'var(--accent)', lineHeight: 1 }}>{v}</div>
+                                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-3)', marginTop: 6 }}>{l}</div>
                             </div>
-                            <div>
-                                <div style={{ fontWeight: 700, marginBottom: 3, fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-3)' }}>Email</div>
-                                <div style={{ color: 'var(--text-2)' }}>somayajulaaryan@gmail.com</div>
-                            </div>
-                            <div>
-                                <div style={{ fontWeight: 700, marginBottom: 3, fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-3)' }}>Location</div>
-                                <div style={{ color: 'var(--text-2)' }}>Canary Wharf, London</div>
-                            </div>
-                            <div>
-                                <div style={{ fontWeight: 700, marginBottom: 3, fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-3)' }}>MSc</div>
-                                <div style={{ color: 'var(--text-2)' }}>Royal Holloway — Merit</div>
-                            </div>
-                        </div>
-
-                        <a href="#contact" className="btn btn-outline">Let's Talk →</a>
+                        ))}
                     </motion.div>
 
-                    {/* Right — real photo (360° spin on enter) */}
-                    <motion.div
-                        initial={{ opacity: 0, rotateY: -360 }}
-                        whileInView={{ opacity: 1, rotateY: 0 }}
-                        viewport={{ once: true, margin: '-80px' }}
-                        transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-                        style={{ perspective: 1200 }}
-                    >
-                        <motion.div
-                            style={{
-                                borderRadius: 24, overflow: 'hidden',
-                                border: 'var(--brutalist-border)',
-                                boxShadow: '8px 8px 0 var(--accent), var(--shadow-lg)',
-                                aspectRatio: '3/4',
-                            }}
-                            whileHover={{ scale: 1.02, rotate: -1, transition: { duration: 0.4 } }}
-                        >
-                            <img
-                                src={`${import.meta.env.BASE_URL}aryan.jpg`}
-                                alt="Aryan Somayajula"
-                                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }}
-                            />
-                        </motion.div>
+                    {/* Contact info */}
+                    <motion.div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 20, marginBottom: 36, fontSize: 14, maxWidth: 700 }} {...vp(0.25)}>
+                        <div>
+                            <div style={{ fontWeight: 700, marginBottom: 3, fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-3)' }}>Location</div>
+                            <div style={{ color: 'var(--text-2)' }}>London, United Kingdom</div>
+                        </div>
+                        <div>
+                            <div style={{ fontWeight: 700, marginBottom: 3, fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-3)' }}>Visa Status</div>
+                            <div style={{ color: 'var(--text-2)' }}>Post-Study Work Visa (Jan 2027)</div>
+                        </div>
+                        <div>
+                            <div style={{ fontWeight: 700, marginBottom: 3, fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-3)' }}>Sponsorship</div>
+                            <div style={{ color: 'var(--text-2)' }}>Open to Skilled Worker Visa</div>
+                        </div>
                     </motion.div>
 
+                    <motion.a href="#contact" className="btn btn-outline" {...vp(0.3)}>Let's Talk →</motion.a>
                 </div>
             </div>
         </section>

@@ -3,41 +3,27 @@ import { motion } from 'framer-motion';
 
 const jobs = [
     {
-        role: 'AI Product Builder',
-        company: 'Stealth AI Projects Lab · London',
-        date: '2024 – Present',
+        role: 'Team Lead - Operations',
+        company: 'Benugo · Waterloo Station, London',
+        date: 'Oct 2024 – Present',
         type: 'work',
-        desc: 'Designing experimental AI systems and intelligent software products that explore how machine learning can automate decision making and improve digital experiences.',
+        desc: 'Leading operations and a 15+ person team at one of London\'s highest-footfall transport hubs, managing cross-functional delivery, incident response, and real-time resource allocation.',
         bullets: [
-            'Building end-to-end ML pipelines from data ingestion to deployment.',
-            'Developing AI-powered tools for resume analysis and recruitment intelligence.',
-            'Prototyping generative media systems and predictive analytics platforms.',
-            'Experimenting with machine learning architectures and product workflows.',
+            'Drive structured coaching, training, and performance reviews - maintaining high output standards under continuous pressure.',
+            'Manage cross-functional delivery, incident response, and real-time resource allocation.',
+            'Cultivated leadership skills in high-stakes, fast-paced environments directly applicable to engineering team contexts.',
         ],
     },
     {
-        role: 'Data & Business Analyst',
-        company: 'Grupo Technologies · Bangalore (Remote)',
-        date: '2022 – 2023',
+        role: 'Android App Developer Intern',
+        company: 'Grupo Technologies · Bangalore, India',
+        date: 'Aug 2022 – Aug 2023',
         type: 'work',
-        desc: 'Worked on real-world business data to uncover insights and design predictive models that improve operational decisions.',
+        desc: 'Built Android applications in Java with REST API integrations and cloud media storage.',
         bullets: [
-            'Built machine learning models to predict customer churn and manufacturing flaws.',
-            'Developed automated analytics pipelines for stronger B2B networks.',
-            'Transformed raw business data into actionable insights — awarded Certificate of Excellence.',
-            'Delivered dashboards and predictive reports for key decision makers.',
-        ],
-    },
-    {
-        role: 'Frontend Developer Intern',
-        company: 'Webingo Infotech · Kolkata, India',
-        date: '2022',
-        type: 'work',
-        desc: 'Developed mobile interfaces and integrated backend services for Android applications.',
-        bullets: [
-            'Designed Android UI interfaces using Java and XML in Android Studio.',
-            'Integrated REST APIs for dynamic data and improved performance.',
-            'Delivered multiple app interfaces ahead of schedule — Certificate of Achievement.',
+            'Built Android applications in Java; integrated REST APIs for real-time backend communication.',
+            'Implemented AWS S3 for cloud media storage and asset management.',
+            'Collaborated with backend engineers to ship production-grade mobile features.',
         ],
     },
     {
@@ -47,18 +33,18 @@ const jobs = [
         type: 'edu',
         desc: '',
         bullets: [
-            'Merit (2:1) — Machine Learning, NLP, Data Visualisation, Big Data Processing.',
-            'Dissertation: Predictive analytics for customer behaviour with Scikit-Learn.',
+            'Merit (2:1) - Machine Learning, NLP, Big Data Processing, Statistical Modelling.',
+            'Dissertation: COVID-19 Detection from Cough Sounds using RL & Random Forest - 96% accuracy.',
         ],
     },
     {
-        role: 'BSc Computer Applications',
+        role: 'Bachelor of Computer Applications',
         company: 'Birla Institute of Technology, Mesra, India',
-        date: 'Graduated 2023',
+        date: '2020 – 2023',
         type: 'edu',
         desc: '',
         bullets: [
-            'Distinction — Python, SQL, Java, Data Mining, Cloud Computing, UI/UX.',
+            'Core modules: Python, Java, Kotlin, Data Mining, Cloud Computing, UI/UX, Algorithms.',
         ],
     },
 ];
@@ -77,7 +63,7 @@ export const Experience = () => (
                 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-                Engineering Journey
+                Journey So Far
             </motion.h2>
 
             {jobs.map((j, i) => (
@@ -99,7 +85,7 @@ export const Experience = () => (
                             border: `1px solid ${j.type === 'edu' ? 'rgba(232,255,74,0.3)' : 'var(--accent-dim)'}`,
                             whiteSpace: 'nowrap',
                         }}>
-                            {j.type === 'edu' ? '🎓 Education' : '⚙️ Builder'}
+                            {j.type === 'edu' ? '🎓 Education' : '💼 Work'}
                         </span>
                     </div>
                     <div className="exp-company">{j.company}</div>

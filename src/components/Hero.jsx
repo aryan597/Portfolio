@@ -39,7 +39,7 @@ const MagicCard = ({ scrollY }) => {
                 perspective: 1400,
             }}
         >
-            {/* Badge OUTSIDE the card — floating above it */}
+            {/* Badge OUTSIDE the card - floating above it */}
             <motion.div
                 animate={{ y: [0, -12, 0], rotate: [0, 18, -8, 18, 0] }}
                 transition={{ y: { duration: 3, repeat: Infinity, ease: 'easeInOut' }, rotate: { duration: 2.5, repeat: Infinity, repeatDelay: 2 } }}
@@ -183,7 +183,7 @@ export const Hero = () => {
                                 <h1 className="hero-word">DATA</h1>
                             </motion.div>
 
-                            {/* CENTER — magical 3D card */}
+                            {/* CENTER - magical 3D card */}
                             <MagicCard scrollY={scrollY} />
 
                             {/* RIGHT */}

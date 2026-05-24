@@ -1,113 +1,221 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Github, ArrowUpRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Github, Cpu, Brain, Mic, Database, Zap, Code, Users } from 'lucide-react';
 
+/*  Project Data (matching exactly 7 repos)  */
 const projects = [
     {
-        title: 'Resift',
-        subtitle: 'AI Resume Intelligence Platform',
-        desc: 'An AI-powered system that analyzes resumes against job descriptions and generates ATS optimization insights. Built to close the gap between candidates and roles.',
-        tech: ['Python', 'NLP', 'Machine Learning', 'React'],
-        img: 'https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&w=1400&q=80',
-        href: 'https://github.com/somayajulaaryan',
-        award: 'Live Product',
+        id: 'nestshift',
+        title: 'NestShift OS',
+        subtitle: 'Privacy-First Agentic Smart Home Platform',
+        category: 'LLM / Edge AI',
+        desc: 'Architected a fully local LLM-based agentic system (Phi-3 Mini, LLaMA 3 8B) to interpret natural language and autonomously orchestrate IoT devices on edge hardware with zero cloud dependency. Includes an Energy Agent for tariff-aware scheduling.',
+        longDesc: 'Built a semantic state-retrieval pipeline (SQLite + InfluxDB) injecting real-time sensor data into the LLM context window. Applied 4-bit quantisation and Whisper offline STT to achieve sub-200ms intent parsing on constrained hardware.',
+        tech: ['Phi-3 Mini', 'LLaMA 3', 'Whisper STT', 'FastAPI', 'MQTT', 'RAG', 'Raspberry Pi'],
+        icon: <Cpu size={20} />,
+        href: 'https://github.com/aryan597/nestshift-os',
+        award: 'Flagship Project',
+        color: '#5B4BDB',
+        size: 'large',
     },
     {
-        title: 'Opportunista',
-        subtitle: 'AI Job Discovery Platform',
-        desc: 'A recruitment intelligence platform designed to match candidates with roles using machine learning, automated skill analysis, and job market signals.',
-        tech: ['Python', 'React', 'AWS', 'NLP'],
-        img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1400&q=80',
-        href: 'https://github.com/somayajulaaryan',
+        id: 'covid',
+        title: 'COVID-19 Detection',
+        subtitle: 'Audio ML MSc Dissertation',
+        category: 'ML / Signal Processing',
+        desc: 'Developed an ML pipeline combining signal processing feature extraction (MFCCs, spectral features) with Reinforcement Learning and Random Forest classification to achieve 96% accuracy on COVID-19 detection from cough audio.',
+        longDesc: 'Full pipeline: audio pre-processing -> MFCC & spectral feature extraction -> feature selection -> RL-guided model optimisation -> Random Forest classifier. Validated on real clinical audio datasets.',
+        tech: ['Python', 'Librosa', 'Random Forest', 'Reinforcement Learning', 'MFCCs'],
+        icon: <Mic size={20} />,
+        href: 'https://github.com/aryan597/COVID-19-Detection-from-Cough-Sounds',
+        award: '96% Accuracy',
+        color: '#00C853',
+        size: 'medium',
+    },
+    {
+        id: 'titanic',
+        title: 'Titanic Passenger Survival',
+        subtitle: 'Convolutional Neural Network',
+        category: 'Deep Learning',
+        desc: 'Built a Convolutional Neural Network (CNN) to predict passenger survival on the Titanic based on passenger manifest data and engineered features.',
+        longDesc: '',
+        tech: ['Python', 'TensorFlow', 'Keras', 'CNN', 'Data Engineering'],
+        icon: <Brain size={20} />,
+        href: 'https://github.com/aryan597/titanic-passenger-survival-cnn',
         award: null,
+        color: '#FF4A8D',
+        size: 'medium',
     },
     {
-        title: 'AI Viral Song Predictor',
-        subtitle: 'Music Intelligence System',
-        desc: 'Machine learning model that predicts the viral potential of music using audio features, metadata, and cultural trend signals extracted via Librosa.',
-        tech: ['Python', 'Librosa', 'Random Forest', 'Scikit-Learn'],
-        img: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1400&q=80',
-        href: 'https://github.com/somayajulaaryan',
+        id: 'churn',
+        title: 'Bank Customer Churn',
+        subtitle: 'Predictive Analytics Model',
+        category: 'Data Science',
+        desc: 'End-to-end data analytics and predictive modeling project forecasting bank customer churn using structured customer behavior datasets.',
+        longDesc: '',
+        tech: ['Python', 'Pandas', 'Scikit-Learn', 'XGBoost', 'Data Viz'],
+        icon: <Database size={20} />,
+        href: 'https://github.com/aryan597/bank-customer-churn-analytics',
         award: null,
+        color: '#E8FF4A',
+        size: 'small',
     },
     {
-        title: 'AI Sci-Fi Video Generator',
-        subtitle: 'Generative Media Pipeline',
-        desc: 'Experimental generative AI pipeline that converts text prompts into cinematic short videos. Prompt → Image Generation → Motion Animation.',
-        tech: ['Python', 'Stable Diffusion', 'ComfyUI', 'FFmpeg'],
-        img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=80',
-        href: 'https://github.com/somayajulaaryan',
-        award: 'Experimental',
-    },
-    {
-        title: 'IPL Match Prediction Engine',
-        subtitle: 'Sports Analytics System',
-        desc: 'Sports analytics system predicting match outcomes using historical cricket data, team composition analysis, and machine learning models trained on 10 years of IPL data.',
-        tech: ['Python', 'Scikit-Learn', 'Pandas', 'XGBoost'],
-        img: 'https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=1400&q=80',
-        href: 'https://github.com/somayajulaaryan',
+        id: 'baforage',
+        title: 'BA Virtual Experience',
+        subtitle: 'British Airways Data Analytics',
+        category: 'Analytics',
+        desc: 'Completed the British Airways virtual experience program, involving customer sentiment analysis and predictive modeling for booking behaviors.',
+        longDesc: '',
+        tech: ['Python', 'NLP', 'Data Analytics', 'Jupyter'],
+        icon: <Zap size={20} />,
+        href: 'https://github.com/aryan597/BA-forage',
         award: null,
+        color: '#FF6B35',
+        size: 'small',
+    },
+    {
+        id: 'grupo',
+        title: 'Grupo',
+        subtitle: 'Group Collaboration Platform',
+        category: 'Software Engineering',
+        desc: 'Developed a robust platform for group collaboration and communication, focusing on clean architecture and scalable backend services.',
+        longDesc: '',
+        tech: ['Java', 'Backend APIs', 'SQL', 'Software Architecture'],
+        icon: <Users size={20} />,
+        href: 'https://github.com/aryan597/Grupo',
+        award: null,
+        color: '#8B7AFF',
+        size: 'small',
+    },
+    {
+        id: 'portfolioapi',
+        title: 'Portfolio Builder API',
+        subtitle: 'RESTful Backend Service',
+        category: 'Backend / APIs',
+        desc: 'Designed and deployed a scalable RESTful API service to dynamically manage and serve portfolio content.',
+        longDesc: '',
+        tech: ['FastAPI', 'Python', 'REST API', 'Database'],
+        icon: <Code size={20} />,
+        href: 'https://github.com/aryan597/portfolio-builder-api',
+        award: null,
+        color: '#00E5A0',
+        size: 'small',
     },
 ];
 
-const ProjectCard = ({ p, index, total, scrollYProgress }) => {
-    const scale = useTransform(scrollYProgress, [index / total, (index + 1) / total], [1, 0.92]);
-    const opacity = useTransform(scrollYProgress, [index / total, (index + 1) / total], [1, 0.50]);
-    const rotX = useTransform(scrollYProgress, [index / total, (index + 1) / total], [0, 6]);
+/*  Project Card  */
+const ProjectCard = ({ p, onClick, isActive }) => {
+    const isLarge = p.size === 'large';
+    const isMedium = p.size === 'medium';
 
     return (
         <motion.div
+            layoutId={`proj-${p.id}`}
+            onClick={() => onClick(p)}
+            className="proj-bento-card"
             style={{
-                position: 'sticky',
-                top: 120 + index * 16,
-                scale, opacity, rotateX: rotX,
-                transformOrigin: 'top center',
-                marginBottom: 40, zIndex: index + 1,
-                willChange: 'transform, opacity',
+                gridColumn: isLarge ? 'span 2' : 'span 1',
+                gridRow: isLarge ? 'span 2' : isMedium ? 'span 2' : 'span 1',
+                '--card-color': p.color,
+                cursor: 'none',
+                position: 'relative',
+                overflow: 'hidden',
+                borderRadius: 20,
+                background: 'var(--surface)',
+                border: '1px solid var(--border)',
+                backdropFilter: 'blur(20px)',
+                boxShadow: 'var(--shadow-md)',
+                minHeight: isLarge ? 340 : isMedium ? 260 : 160,
+                padding: isLarge ? 36 : 28,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                transition: 'box-shadow 0.3s, transform 0.3s',
             }}
+            whileHover={{ y: -5, boxShadow: `0 32px 80px rgba(0,0,0,0.18), 0 0 0 1px ${p.color}33` }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-            <motion.a
-                href={p.href} target="_blank" rel="noopener noreferrer"
-                className="proj-card"
-                initial={{ opacity: 0, y: 80 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                style={{ display: 'block', border: 'var(--brutalist-border)', boxShadow: '6px 6px 0 var(--border-hard), var(--shadow-lg)' }}
-            >
-                <motion.img
-                    src={p.img} alt={p.title} loading="lazy" className="proj-img"
-                    whileHover={{ scale: 1.04, filter: 'brightness(0.8)', transition: { duration: 0.55 } }}
-                    style={{ filter: 'brightness(0.55)' }}
-                />
-                <div className="proj-overlay">
-                    {p.award && (
-                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 10, padding: '5px 14px', borderRadius: 100, background: 'var(--accent)', color: '#fff', fontSize: 12, fontWeight: 700 }}>
-                            ✦ {p.award}
+            {/* Top glow bar */}
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: p.color, borderRadius: '20px 20px 0 0', opacity: 0.8 }} />
+
+            {/* Background ambient */}
+            <div style={{ position: 'absolute', top: -60, right: -60, width: 200, height: 200, borderRadius: '50%', background: `radial-gradient(circle, ${p.color}18 0%, transparent 70%)`, pointerEvents: 'none' }} />
+
+            {/* Header */}
+            <div>
+                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 16 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                        <div style={{
+                            width: 42, height: 42, borderRadius: 12,
+                            background: `${p.color}18`,
+                            border: `1px solid ${p.color}33`,
+                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            color: p.color,
+                        }}>
+                            {p.icon}
                         </div>
-                    )}
-                    <h3 className="proj-title">{p.title}</h3>
-                    <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 8 }}>{p.subtitle}</p>
-                    <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.75)', lineHeight: 1.75, maxWidth: 620 }}>{p.desc}</p>
-                    <div className="proj-tech">
-                        {p.tech.map(t => <span key={t} className="proj-badge">{t}</span>)}
-                        <motion.span
-                            style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 6, fontSize: 14, fontWeight: 700, color: 'var(--accent-alt)' }}
-                            whileHover={{ x: 4 }}
+                        <div>
+                            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-3)', marginBottom: 2 }}>{p.category}</div>
+                            {p.award && (
+                                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 4, padding: '2px 10px', borderRadius: 100, background: `${p.color}18`, color: p.color === '#E8FF4A' ? '#7a8500' : p.color, fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', border: `1px solid ${p.color}33` }}>
+                                    ✦ {p.award}
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                    {/* Only ONE button linking to the GitHub repo */}
+                    <div style={{ display: 'flex', gap: 8 }}>
+                        <motion.a
+                            href={p.href} target="_blank" rel="noopener noreferrer"
+                            onClick={e => e.stopPropagation()}
+                            style={{ width: 34, height: 34, borderRadius: 10, border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-3)' }}
+                            whileHover={{ background: p.color, color: '#fff', borderColor: p.color }}
                         >
-                            <Github size={16} /> View <ArrowUpRight size={16} />
-                        </motion.span>
+                            <Github size={15} />
+                        </motion.a>
                     </div>
                 </div>
-            </motion.a>
+
+                <h3 style={{ fontFamily: 'Bebas Neue', fontSize: isLarge ? 'clamp(32px,4vw,52px)' : 28, letterSpacing: '0.03em', marginBottom: 8, lineHeight: 1 }}>{p.title}</h3>
+                <p style={{ fontSize: 12, color: 'var(--text-3)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 }}>{p.subtitle}</p>
+                <p style={{ fontSize: 14, color: 'var(--text-2)', lineHeight: 1.75, display: isLarge || isMedium ? 'block' : '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: isLarge || isMedium ? 'visible' : 'hidden' }}>
+                    {p.desc}
+                </p>
+
+                {(isLarge || isMedium) && p.longDesc && (
+                    <p style={{ fontSize: 13, color: 'var(--text-3)', lineHeight: 1.75, marginTop: 12 }}>
+                        {p.longDesc}
+                    </p>
+                )}
+            </div>
+
+            {/* Tech tags */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 16 }}>
+                {p.tech.slice(0, isLarge ? 9 : 4).map(t => (
+                    <span key={t} style={{
+                        padding: '4px 12px', borderRadius: 100, fontSize: 11, fontWeight: 600,
+                        background: `${p.color}12`, color: p.color === '#E8FF4A' ? '#7a8500' : p.color,
+                        border: `1px solid ${p.color}25`,
+                    }}>
+                        {t}
+                    </span>
+                ))}
+                {p.tech.length > (isLarge ? 9 : 4) && (
+                    <span style={{ padding: '4px 12px', borderRadius: 100, fontSize: 11, fontWeight: 600, background: 'var(--accent-dim)', color: 'var(--accent)' }}>
+                        +{p.tech.length - (isLarge ? 9 : 4)}
+                    </span>
+                )}
+            </div>
         </motion.div>
     );
 };
 
 export const Projects = () => {
-    const ref = useRef(null);
-    const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
+    const [selected, setSelected] = useState(null);
 
     return (
         <section className="section" id="projects" style={{ borderTop: '1px solid var(--border)' }}>
@@ -117,18 +225,49 @@ export const Projects = () => {
                     viewport={{ once: true }} transition={{ duration: 0.6 }}
                 >Selected Work</motion.span>
                 <motion.h2
-                    style={{ fontSize: 'clamp(48px,6vw,80px)' }}
+                    style={{ fontSize: 'clamp(48px,6vw,80px)', marginBottom: 16 }}
                     initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 >Systems I've Built</motion.h2>
-            </div>
-            <div ref={ref} style={{ paddingBottom: '15vh' }}>
-                <div className="container" style={{ perspective: 1400 }}>
-                    {projects.map((p, i) => (
-                        <ProjectCard key={i} p={p} index={i} total={projects.length} scrollYProgress={scrollYProgress} />
+                <motion.p
+                    style={{ fontSize: 15, color: 'var(--text-2)', lineHeight: 1.75, maxWidth: 560, marginBottom: 56 }}
+                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}
+                >
+                    Real systems solving real problems. From local LLM edge agents to high accuracy diagnostic models and production APIs.
+                </motion.p>
+
+                {/* Bento Grid */}
+                <div className="proj-grid">
+                    {projects.map(p => (
+                        <ProjectCard key={p.id} p={p} onClick={setSelected} isActive={selected?.id === p.id} />
                     ))}
                 </div>
+
+                {/* GitHub CTA */}
+                <motion.div
+                    style={{ display: 'flex', justifyContent: 'center', marginTop: 48 }}
+                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                    <motion.a
+                        href="https://github.com/aryan597"
+                        target="_blank" rel="noopener noreferrer"
+                        className="btn btn-outline"
+                        whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}
+                    >
+                        <Github size={18} /> View Profile on GitHub
+                    </motion.a>
+                </motion.div>
             </div>
+
+            {/* CSS for grid responsive */}
+            <style>{`
+                @media (max-width: 900px) {
+                    .proj-bento-card { grid-column: span 1 !important; grid-row: span 1 !important; }
+                }
+            `}</style>
         </section>
     );
 };

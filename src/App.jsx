@@ -9,24 +9,26 @@ import { Experience } from './components/Experience';
 import { Projects } from './components/Projects';
 import { Stats } from './components/Stats';
 import { FAQ } from './components/FAQ';
-import { Contact } from './components/Contact';
+import { Footer } from './components/Footer';
 import { AILab } from './components/AILab';
 import { ScrollToTop } from './components/ui/ScrollToTop';
 
 function App() {
-  const [dark, setDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
 
   useEffect(() => {
-    document.body.classList.toggle('dark', dark);
-  }, [dark]);
+    // Our CSS defaults to dark mode tokens. 
+    // We toggle the .light class when isDark is false.
+    document.body.classList.toggle('light', !isDark);
+  }, [isDark]);
 
   return (
     <>
       <Cursor />
       <motion.div className="progress-bar" style={{ scaleX }} />
-      <Navigation />
+      <Navigation onToggleTheme={() => setIsDark(d => !d)} isDark={isDark} />
 
       <main>
         <Hero />
@@ -37,30 +39,10 @@ function App() {
         <Projects />
         <AILab />
         <FAQ />
-        <Contact />
       </main>
 
-      <footer>
-        <div className="container footer">
-          <span className="footer-copy">© {new Date().getFullYear()} Aryan Somayajula</span>
-          <span className="footer-copy">Built with React · Framer Motion</span>
-        </div>
-      </footer>
+      <Footer />
 
-      {/* Cute theme toggle */}
-      <motion.div
-        className="theme-toggle"
-        onClick={() => setDark(d => !d)}
-        whileTap={{ scale: 0.9 }}
-        title="Toggle dark mode"
-      >
-        <motion.div
-          className="theme-knob"
-          animate={{ x: dark ? 22 : 0 }}
-          transition={{ type: 'spring', stiffness: 600, damping: 32 }}
-        />
-      </motion.div>
-      {/* Custom Scroll To Top */}
       <ScrollToTop />
     </>
   );
