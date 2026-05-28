@@ -17,6 +17,7 @@ const groups = [
             { name: 'TensorFlow / PyTorch', level: 'Proficient' },
             { name: 'Scikit-Learn', level: 'Advanced' },
             { name: 'Pandas / NumPy', level: 'Advanced' },
+            { name: 'Time-Series & Quantile Regression', level: 'Advanced' },
             { name: 'NLP & Feature Engineering', level: 'Intermediate' },
         ],
     },
@@ -29,11 +30,12 @@ const groups = [
         ],
     },
     {
-        heading: 'Cloud & DevOps',
+        heading: 'Cloud & Edge',
         items: [
             { name: 'AWS (S3, EC2, Lambda)', level: 'Intermediate' },
             { name: 'Docker', level: 'Intermediate' },
             { name: 'GitHub Actions / CI-CD', level: 'Proficient' },
+            { name: 'Jetson Orin Nano / Raspberry Pi', level: 'Advanced' },
         ],
     },
     {

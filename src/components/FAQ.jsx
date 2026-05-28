@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
 const faqs = [
-    { q: 'What is your core technical stack?', a: 'My expertise centers around Python, PyTorch, TensorFlow, and FastAPI for backend ML services. On the edge side, I work with Raspberry Pi/Jetson hardware, MQTT, and local LLMs (Llama-3, Phi-3). I also have strong data engineering foundations using SQL, Pandas, and vector databases.' },
+    { q: 'What is your core technical stack?', a: 'Python, PyTorch, and FastAPI for backend ML services. Specialised in time-series forecasting (dual-head quantile regression), neuromorphic computing (LIF + STDP), and edge deployment on Jetson Orin Nano. Strong data engineering with SQL, Pandas, and InfluxDB.' },
     { q: 'Are you open to full-time roles?', a: 'Yes. I am actively looking for AI Engineer, ML Engineer, and LLM Systems roles based in London. I hold a UK Post-Study Work Visa valid until Jan 2027 and am open to Skilled Worker Visa sponsorship.' },
     { q: 'What did your MSc cover?', a: 'I completed my MSc in Data Science & Analytics (Merit) at Royal Holloway, University of London. The curriculum covered Machine Learning, NLP, Big Data Processing, and Statistical Modelling. My dissertation focused on COVID-19 detection from audio using RL & Random Forests (96% accuracy).' },
-    { q: 'Do you have production experience?', a: 'Absolutely. Alongside my academic and independent research, I built the entire backend architecture for NestShift OS, developed live APIs for resume parsing (Resift), and have industry experience managing operations and analytics for leadership teams.' },
+    { q: 'Do you have production experience?', a: 'Yes. NestShift OS is a full-stack agentic smart-home platform with a published academic paper, real LCL smart-meter validation (7,140 test samples), and a target production BOM for Jetson Orin Nano. I also built live APIs and have industry operations experience managing 15+ person teams.' },
 ];
 
 export const FAQ = () => {

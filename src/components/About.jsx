@@ -4,17 +4,17 @@ import { ChevronDown, CheckCircle2 } from 'lucide-react';
 
 const services = [
     { title: 'LLM & Agentic Systems', desc: 'End-to-end agentic pipelines, RAG architectures, and context engineering for production LLM deployments.' },
-    { title: 'Edge AI & Local-First ML', desc: 'Running quantised LLMs (Phi-3, LLaMA 3) on constrained hardware - Raspberry Pi, Jetson - with zero cloud dependency.' },
-    { title: 'ML Pipeline Engineering', desc: 'Data ingestion → feature engineering → training → deployment, with rigorous evaluation and monitoring.' },
-    { title: 'Semantic Extraction & RAG', desc: 'Injecting real-time sensor data and unstructured context into LLM windows for grounded, accurate outputs.' },
+    { title: 'Edge AI & Local-First ML', desc: 'Running quantised LLMs and time-series models on constrained hardware — Raspberry Pi, Jetson Orin Nano — with zero cloud dependency.' },
+    { title: 'Time-Series & Quantile Forecasting', desc: 'Dual-head quantile regression for energy load forecasting with real-world validation on 7,000+ smart-meter samples.' },
+    { title: 'Neuromorphic & Event-Based AI', desc: 'LIF spiking-neuron networks with STDP plasticity for autonomous edge control, simulated and validated on SQLite-persistent synapses.' },
 ];
 
 const coreSkills = [
     { name: 'LLMs (Phi-3, LLaMA 3, Whisper)', level: 'Expert' },
-    { name: 'Agentic Workflows & RAG', level: 'Expert' },
-    { name: 'Python · FastAPI', level: 'Expert' },
-    { name: 'Scikit-Learn · NumPy · Pandas', level: 'Advanced' },
-    { name: 'Docker · Edge Computing', level: 'Advanced' },
+    { name: 'Time-Series & Quantile Regression', level: 'Expert' },
+    { name: 'Neuromorphic Computing (LIF + STDP)', level: 'Advanced' },
+    { name: 'Python · PyTorch · FastAPI', level: 'Expert' },
+    { name: 'Edge AI · Jetson · Raspberry Pi', level: 'Advanced' },
     { name: 'SQLite · InfluxDB · SQL', level: 'Advanced' },
 ];
 

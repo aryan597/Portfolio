@@ -168,7 +168,7 @@ export const Hero = () => {
                             }}
                         >
                             <Sparkles size={14} color="var(--accent)" />
-                            Open to Building · Canary Wharf, London
+                            NestShift OS · AI Engineer · London
                             <div className="pulse" />
                         </motion.div>
                     </motion.div>
